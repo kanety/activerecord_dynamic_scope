@@ -1,0 +1,19 @@
+default: &default
+  adapter: postgresql
+  pool: 10
+  timeout: 5000
+
+development:
+  <<: *default
+  database: ar_dynamic_scope_development
+
+test:
+  <<: *default
+  database: ar_dynamic_scope_test
+  host: localhost
+  username: <%= ENV['POSTGRES_USER'] %>
+  password: <%= ENV['POSTGRES_PASSWORD'] %>
+
+production:
+  <<: *default
+  database: ar_dynamic_scope_production

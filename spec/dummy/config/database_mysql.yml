@@ -1,0 +1,18 @@
+default: &default
+  adapter: mysql2
+  pool: 10
+  timeout: 5000
+
+development:
+  <<: *default
+  database: ar_dynamic_scope_development
+
+test:
+  <<: *default
+  database: ar_dynamic_scope_test
+  host: 127.0.0.1
+  username: root
+
+production:
+  <<: *default
+  database: ar_dynamic_scope_production
