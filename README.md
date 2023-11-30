@@ -77,7 +77,7 @@ class Item < ActiveRecord::Base
 end
 
 ActiveRecordDynamicScope.with(account: 1) do
-  Item.all  #=> SELECT "items".* FROM "items" WHERE "items"."partition1" = 1 AND "items"."partition2" = 2
+  Item.all  #=> SELECT "items".* FROM "items" WHERE "items"."partition" = 1
 end
 ```
 
