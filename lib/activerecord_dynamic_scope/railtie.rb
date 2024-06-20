@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ActiveRecordDynamicScope
   class Railtie < Rails::Railtie
     ActiveSupport.on_load :active_record do

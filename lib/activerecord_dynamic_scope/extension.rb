@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ActiveRecordDynamicScope
   module Extension
     extend ActiveSupport::Concern
