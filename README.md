@@ -4,8 +4,8 @@ Handling dynamic scope for ActiveRecord.
 
 ## Dependencies
 
-* ruby 2.7+
-* activerecord 6.0+
+* ruby 3.0+
+* activerecord 7.0+
 
 ## Installation
 
