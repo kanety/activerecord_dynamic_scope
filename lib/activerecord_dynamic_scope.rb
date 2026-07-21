@@ -22,9 +22,9 @@ module ActiveRecordDynamicScope
       Thread.current[KEY] = old
     end
 
-    def without(keys)
+    def without(*keys)
       old = Thread.current[KEY]
-      Thread.current[KEY] = Thread.current[KEY].to_h.except(keys)
+      Thread.current[KEY] = Thread.current[KEY].to_h.except(*keys.flatten)
       yield
     ensure
       Thread.current[KEY] = old

@@ -28,6 +28,26 @@ describe ActiveRecordDynamicScope do
     end
   end
 
+  context 'mutiple dynamic scopes' do
+    it 'clears dynamic scopes for keys of arguments' do
+      ActiveRecordDynamicScope.with(partition1: 1, partition2: 1) do
+        expect(Item.all.count).to eq(1)
+        ActiveRecordDynamicScope.without(:partition1, :partition2) do
+          expect(Item.all.count).to eq(9)
+        end
+      end
+    end
+
+    it 'clears dynamic scopes for keys of array' do
+      ActiveRecordDynamicScope.with(partition1: 1, partition2: 1) do
+        expect(Item.all.count).to eq(1)
+        ActiveRecordDynamicScope.without([:partition1, :partition2]) do
+          expect(Item.all.count).to eq(9)
+        end
+      end
+    end
+  end
+
   context 'nested dynamic scope' do
     it 'runs nested dynamic scope' do
       ActiveRecordDynamicScope.with(partition1: 1) do
