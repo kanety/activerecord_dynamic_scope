@@ -48,6 +48,18 @@ describe ActiveRecordDynamicScope do
     end
   end
 
+  context 'unsafe dynamic scope switching' do
+    it 'runs dynamic scope' do
+      begin
+        ActiveRecordDynamicScope.with!(partition1: 1)
+        expect(Item.all.count).to eq(3)
+      ensure
+        ActiveRecordDynamicScope.without!(:partition1)
+        expect(Item.all.count).to eq(9)
+      end
+    end
+  end
+
   context 'nested dynamic scope' do
     it 'runs nested dynamic scope' do
       ActiveRecordDynamicScope.with(partition1: 1) do

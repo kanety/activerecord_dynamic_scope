@@ -29,5 +29,13 @@ module ActiveRecordDynamicScope
     ensure
       Thread.current[KEY] = old
     end
+
+    def with!(hash = {})
+      Thread.current[KEY] = Thread.current[KEY].to_h.merge(hash)
+    end
+
+    def without!(*keys)
+      Thread.current[KEY] = Thread.current[KEY].to_h.except(*keys.flatten)
+    end
   end
 end
